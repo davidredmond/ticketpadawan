@@ -10,6 +10,6 @@ namespace TP.Database.Models
         public DateTime Updated { get; set; }
         public required string Description { get; set; }
         public bool IsSold { get; set; }
-        public DateTime SoldTime { get; set; }
+        public DateTime? SoldTime { get; set; }
     }
 }

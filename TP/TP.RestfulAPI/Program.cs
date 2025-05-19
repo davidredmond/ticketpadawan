@@ -25,6 +25,7 @@ bld.Services.AddTransient<IQueryHandler<GetAllVenuesQuery, WorkResult<IEnumerabl
 bld.Services.AddTransient<TP.Domain.Commands.ICommandHandler<PurchaseTicketCommand, WorkResult<IEnumerable<TicketModel>>>, PurchaseTicketCommandHandler>();
 bld.Services.AddTransient<IQueryHandler<GetAvailableTicketsForEventQuery, WorkResult<IEnumerable<TicketPriceModel>>>, GetAvailableTicketsForEventQueryHandler>();
 
+bld.Services.AddTransient<TP.Domain.Commands.ICommandHandler<RefundTicketCommand, WorkResult<bool>>, RefundTicketCommandHandler>();
 bld.Services.AddTransient<TP.Domain.Commands.ICommandHandler<CancelEventCommand, WorkResult<int>>, CancelEventCommandHandler>();
 bld.Services.AddTransient<TP.Domain.Commands.ICommandHandler<CreateEventCommand, WorkResult<EventModel>>, CreateEventCommandHandler>();
 bld.Services.AddTransient<TP.Domain.Commands.ICommandHandler<DeleteEventCommand, WorkResult<int>>, DeleteEventCommandHandler>();

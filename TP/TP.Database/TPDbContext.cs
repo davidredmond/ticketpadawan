@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using TP.Database.Models;
 
 namespace TP.Database
@@ -12,6 +13,7 @@ namespace TP.Database
         {
             _configuration = configuration;
         }
+
         public DbSet<Event> Events { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Ticket> Tickets{ get; set; }
