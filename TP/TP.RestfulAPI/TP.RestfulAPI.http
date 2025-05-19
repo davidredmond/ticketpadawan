@@ -1,0 +1,6 @@
+@TP.RestfulAPI_HostAddress = http://localhost:5135
+
+GET {{TP.RestfulAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
