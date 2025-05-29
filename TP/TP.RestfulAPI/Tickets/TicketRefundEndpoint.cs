@@ -1,6 +1,7 @@
 ﻿using FastEndpoints;
 using TP.Domain;
 using TP.Domain.Commands.Ticket;
+using TP.Domain.Enum;
 using TP.Domain.Models.Result;
 using TP.Domain.Models.Ticket;
 
@@ -18,7 +19,7 @@ namespace TP.RestfulAPI.Tickets
         public override void Configure()
         {
             Post("/tickets/{eventId}/refund/{ticketId}");
-            AllowAnonymous();
+            Policies(UserRoleEnum.USER.ToFriendlyString());
         }
 
         public override async Task HandleAsync(CancellationToken ct)

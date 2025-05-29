@@ -1,5 +1,6 @@
 ﻿using FastEndpoints;
 using TP.Domain;
+using TP.Domain.Enum;
 using TP.Domain.Models.Event;
 using TP.Domain.Models.Result;
 using TP.Domain.Queries.Report;
@@ -18,7 +19,7 @@ namespace TP.RestfulAPI.Events
         public override void Configure()
         {
             Get("/event/{eventId}/report");
-            AllowAnonymous();
+            Policies(UserRoleEnum.ADMINISTRATOR.ToFriendlyString());
         }
 
         public override async Task HandleAsync(CancellationToken ct)

@@ -1,6 +1,7 @@
 ﻿using FastEndpoints;
 using TP.Domain;
 using TP.Domain.Commands.Event;
+using TP.Domain.Enum;
 using TP.Domain.Models.Result;
 
 namespace TP.RestfulAPI.Events
@@ -17,7 +18,7 @@ namespace TP.RestfulAPI.Events
         public override void Configure()
         {
             Put("/event/{eventId}/cancel");
-            AllowAnonymous();
+            Policies(UserRoleEnum.ADMINISTRATOR.ToFriendlyString());
         }
 
         public override async Task HandleAsync(CancellationToken ct)
