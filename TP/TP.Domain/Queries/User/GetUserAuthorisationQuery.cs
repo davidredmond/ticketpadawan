@@ -8,13 +8,6 @@ namespace TP.Domain.Queries.User
 
     public class GetUserAuthorisationQueryHandler : IQueryHandler<GetUserAuthorisationQuery, WorkResult<IEnumerable<UserRoleEnum>>>
     {
-        private readonly TPDbContext _dbContext;
-        
-        public GetUserAuthorisationQueryHandler(TPDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-
         public async Task<WorkResult<IEnumerable<UserRoleEnum>>> HandleAsync(GetUserAuthorisationQuery command)
         {
             if (command.Username == "admin" && command.Password == "admin123")
