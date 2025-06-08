@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TP.Database;
-using TP.Domain.Models;
 using TP.Domain.Models.Result;
-using TP.Domain.Models.Ticket;
 
 namespace TP.Domain.Commands.Ticket
 {

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TP.Database;
 using TP.Database.Models;
-using TP.Domain.Models;
 using TP.Domain.Models.Event;
 using TP.Domain.Models.Result;
 
@@ -77,7 +76,7 @@ namespace TP.Domain.Commands.Event
             {
                 await _dbContext.Events.AddAsync(dbEvent);
                 await _dbContext.SaveChangesAsync();
-                return new WorkResult<EventModel>(MappingHelper.MapEventToEventModel(dbEvent))
+                return new WorkResult<EventModel>(EventModel.CopyFromEvent(dbEvent))
                 {
                     IsSuccess = true,
                     Message = "Event created successfully"

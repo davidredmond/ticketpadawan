@@ -16,6 +16,7 @@ using TP.Domain.Queries.Report;
 using TP.Domain.Queries.Ticket;
 using TP.Domain.Queries.User;
 using TP.Domain.Queries.Venue;
+using Wolverine;
 
 const string SIGNING_KEY = "CaseBeanHeadQuitEdgeGlueWoodFork";
 
@@ -54,6 +55,11 @@ bld.Services.AddTransient<IQueryHandler<GetSalesReportForEventQuery, WorkResult<
 bld.Services.AddTransient<IQueryHandler<GetUserAuthorisationQuery, WorkResult<IEnumerable<UserRoleEnum>>>, GetUserAuthorisationQueryHandler>();
 
 bld.Services.SwaggerDocument();
+
+bld.Host.UseWolverine(opt =>
+{
+    opt.Discovery.IncludeAssembly(typeof(EventModel).Assembly);
+});
 
 var app = bld.Build();
 app.UseFastEndpoints()

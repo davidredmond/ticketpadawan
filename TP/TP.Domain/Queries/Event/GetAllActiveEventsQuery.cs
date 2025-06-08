@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TP.Database;
-using TP.Domain.Models;
 using TP.Domain.Models.Event;
 using TP.Domain.Models.Result;
 
@@ -25,7 +24,7 @@ namespace TP.Domain.Queries.Event
                 .Include(a => a.Venue)
                     .ThenInclude(a => a.Location)
                 .Where(a => a.IsCancelled == false && a.IsDeleted == false).ToListAsync();
-            return new WorkResult<IEnumerable<EventModel>>(dbEvents.Select(MappingHelper.MapEventToEventModel))
+            return new WorkResult<IEnumerable<EventModel>>(dbEvents.Select(EventModel.CopyFromEvent))
             {
                 IsSuccess = true,
                 Message = $"{dbEvents.Count} events retrieved successfully"

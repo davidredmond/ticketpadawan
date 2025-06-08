@@ -1,6 +1,5 @@
 ﻿using TP.Database;
 using TP.Database.Models;
-using TP.Domain.Models;
 using TP.Domain.Models.Result;
 using TP.Domain.Models.Venue;
 
@@ -47,7 +46,7 @@ namespace TP.Domain.Commands.Venue
             try
             {
                 await _dbContext.SaveChangesAsync();
-                return new WorkResult<VenueModel>(MappingHelper.MapVenueToVenueModel(dbVenue.Entity))
+                return new WorkResult<VenueModel>(VenueModel.CopyFromVenue(dbVenue.Entity))
                 {
                     IsSuccess = true,
                     Message = "Venue created successfully"

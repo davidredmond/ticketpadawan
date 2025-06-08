@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TP.Database;
-using TP.Domain.Models;
 using TP.Domain.Models.Event;
 using TP.Domain.Models.Result;
 
@@ -37,7 +36,7 @@ namespace TP.Domain.Queries.Report
 
             var salesModel = new EventSalesModel
             {
-                Event = MappingHelper.MapEventToEventModel(dbEvent),
+                Event = EventModel.CopyFromEvent(dbEvent),
                 TicketPrices = dbEvent.TicketingCapacities.Select(a => new Models.Ticket.TicketSalesModel
                 {
                     Price = a.Price,

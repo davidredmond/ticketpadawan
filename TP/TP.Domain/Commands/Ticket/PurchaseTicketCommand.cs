@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TP.Database;
-using TP.Domain.Models;
 using TP.Domain.Models.Result;
 using TP.Domain.Models.Ticket;
 
@@ -70,7 +69,7 @@ namespace TP.Domain.Commands.Ticket
             try
             {
                 await _dbContext.SaveChangesAsync();
-                return new WorkResult<IEnumerable<TicketModel>>(tickets.Select(a => MappingHelper.MapTicketToTicketModel(a, dbEvent)).ToList())
+                return new WorkResult<IEnumerable<TicketModel>>(tickets.Select(TicketModel.CopyFromTicket).ToList())
                 {
                     IsSuccess = true,
                     Message = "Tickets purchased successfully"

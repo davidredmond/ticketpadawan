@@ -1,6 +1,5 @@
 ﻿using TP.Domain.Models.Result;
 using TP.Domain.Models.Venue;
-using TP.Domain.Models;
 using TP.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +21,7 @@ namespace TP.Domain.Queries.Venue
             var venues = await _dbContext.Venues
                 .Include(a => a.Location)
                 .ToListAsync();
-            return new WorkResult<IEnumerable<VenueModel>>(venues.Select(MappingHelper.MapVenueToVenueModel))
+            return new WorkResult<IEnumerable<VenueModel>>(venues.Select(VenueModel.CopyFromVenue))
             {
                 IsSuccess = true,
                 Message = $"{venues.Count} venues retrieved successfully"

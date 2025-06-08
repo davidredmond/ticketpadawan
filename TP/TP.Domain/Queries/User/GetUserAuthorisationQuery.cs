@@ -1,5 +1,4 @@
-﻿using TP.Database;
-using TP.Domain.Enum;
+﻿using TP.Domain.Enum;
 using TP.Domain.Models.Result;
 
 namespace TP.Domain.Queries.User

@@ -1,5 +1,4 @@
 ﻿using FastEndpoints;
-using SQLitePCL;
 using TP.Domain;
 using TP.Domain.Commands.Event;
 using TP.Domain.Enum;
