@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "Protos";
+
+import "google/protobuf/timestamp.proto";
+
+service EventService {
+  rpc GetEvents (EmptyRequest) returns (GetEventsResponse);
+  rpc GetEventById (GetEventByIdRequest) returns (EventResponse);
+  //rpc CreateEvent (CreateEventRequest) returns (CreateEventResponse);
+  //rpc UpdateEvent (UpdateEventRequest) returns (UpdateEventResponse);
+  //rpc DeleteEvent (DeleteEventRequest) returns (DeleteEventResponse);
+}
+
+message EmptyRequest {
+}
+
+message GetEventByIdRequest {
+  int32 event_id = 1; // Optional filter for events
+}
+
+message GetEventsResponse {
+	repeated EventResponse events = 1; // List of events
+}
+
+message EventResponse {
+  int32 id = 1; // Unique identifier for the event
+  string name = 2; // Name of the event
+  string description = 3; // Description of the event
+  google.protobuf.Timestamp start_date = 4; // Date of the event
+}
